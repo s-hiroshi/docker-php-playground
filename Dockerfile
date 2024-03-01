@@ -5,10 +5,10 @@ RUN apt-get update \
  && apt-get install -y \
     libzip-dev \
     libmemcached-dev \
-    zlib1g-dev
+    zlib1g-dev \
+    libssl-dev
 
 COPY ./php.ini /usr/local/etc/php/php.ini
-
 RUN docker-php-ext-install \
     zip \
  && pecl install \
