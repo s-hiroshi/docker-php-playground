@@ -1,0 +1,18 @@
+FROM php:latest
+
+RUN apt-get update \
+ && apt-get upgrade -y \
+ && apt-get install -y \
+    libmemcached-dev \
+    libhashkit-dev \
+    libmemcached11 \
+    libmemcachedutil2 \
+    libsasl2-dev \
+    libz-dev
+COPY ./php.ini /usr/local/etc/php/php.ini
+RUN docker-php-ext-configure \
+    memcached --with-libmemcached-dir=/etc/memcached
+RUN pecl install \
+    memcached \
+ && docker-php-ext-enable \
+    memcached
