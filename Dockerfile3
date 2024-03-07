@@ -3,5 +3,5 @@ FROM php:latest
 RUN apt-get update && apt-get install -y \
         libbz2-dev \
         # bzip2 \
-    && docker-php-ext-configure bz2 --with-bz2 \
+    # && docker-php-ext-configure bz2 --with-bz2 \
     && docker-php-ext-install bz2
